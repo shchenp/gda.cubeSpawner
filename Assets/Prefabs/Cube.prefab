@@ -146,7 +146,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b21f554216282344bff38033f4b7a80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _recoloringDuration: 0.5
-  _delayRecoloring: 0
+  _recoloringDuration: 1
+  _delayRecoloring: 3
   _cubeRenderer: {fileID: 5880931994381730126}
-  _colorSettings: {fileID: 0}

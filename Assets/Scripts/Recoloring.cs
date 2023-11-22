@@ -19,6 +19,8 @@ public class Recoloring : MonoBehaviour
    private Color _currentColor;
    private Color _newColor;
    private float _recoloringTime;
+   private float _timeAfterRecoloring;
+   private bool _isWaiting;
 
    private void Awake()
    {
@@ -27,7 +29,7 @@ public class Recoloring : MonoBehaviour
 
    private void Update()
    {
-      ChangeColor();
+      TryChangeColor();
    }
 
    private void ChangeColor()
@@ -39,7 +41,9 @@ public class Recoloring : MonoBehaviour
       if (_recoloringTime >= _recoloringDuration)
       {
          _recoloringTime = 0;
+         _timeAfterRecoloring = 0;
          _currentColor = _newColor;
+         _isWaiting = true;
          _newColor = CreateNewColor();
       }
    }
@@ -47,5 +51,24 @@ public class Recoloring : MonoBehaviour
    private Color CreateNewColor()
    {
       return Random.ColorHSV(0, 1, 0.8f, 1, 0.5f, 0.5f);
+   }
+
+   private void TryChangeColor()
+   {
+      if (_isWaiting)
+      {
+         _timeAfterRecoloring += Time.deltaTime;
+         
+         if (_timeAfterRecoloring >= _delayRecoloring)
+         {
+            _isWaiting = false;
+         }
+         else
+         {
+            return;
+         }
+      }
+      
+      ChangeColor();
    }
 }
