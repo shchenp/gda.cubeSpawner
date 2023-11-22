@@ -22,7 +22,7 @@ public class Recoloring : MonoBehaviour
 
    private void Awake()
    {
-      _newColor = Random.ColorHSV();
+      _newColor = CreateNewColor();
    }
 
    private void Update()
@@ -40,7 +40,12 @@ public class Recoloring : MonoBehaviour
       {
          _recoloringTime = 0;
          _currentColor = _newColor;
-         _newColor = Random.ColorHSV();
+         _newColor = CreateNewColor();
       }
+   }
+
+   private Color CreateNewColor()
+   {
+      return Random.ColorHSV(0, 1, 0.8f, 1, 0.5f, 0.5f);
    }
 }

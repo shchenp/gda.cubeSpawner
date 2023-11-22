@@ -149,3 +149,4 @@ MonoBehaviour:
   _recoloringDuration: 0.5
   _delayRecoloring: 0
   _cubeRenderer: {fileID: 5880931994381730126}
+  _colorSettings: {fileID: 0}
